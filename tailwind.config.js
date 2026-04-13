@@ -3,6 +3,25 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          "Gilroy",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "Noto Sans",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+        ],
+      },
       colors: {
         // 🌿 Base
         background: "#F2EAE0",
@@ -16,7 +35,7 @@ export default {
         secondaryHover: "#A0C4CB",
 
         accent: {
-          500: "#d9bdedff",
+          500: "#c7b4d5ff",
           600: "#bda6ce",
         }, // tags / secondary buttons
 
