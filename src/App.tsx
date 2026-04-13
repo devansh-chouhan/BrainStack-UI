@@ -1,14 +1,20 @@
+import { useState } from "react"
 import { Button } from "./components/Button.tsx"
 import { Card } from "./components/Card.tsx"
+import { ContentModal } from "./components/ContentModal.tsx"
 import { PlusIcon } from "./icons/PlusIcon.tsx"
 import { ShareIcon } from "./icons/ShareIcon.tsx"
 
 
 export default function App() {
+
+  const [modelOpen , setModelOpen] = useState(false);
+
   return (
     <div className="p-4">
+        <ContentModal open={modelOpen} onClose={() => setModelOpen(false)}/>
         <div className="flex justify-end gap-4">
-          <Button text="Add content" variant="primary" startIcon={<PlusIcon/>} />
+          <Button onClick={() => setModelOpen(true)} text="Add content" variant="primary" startIcon={<PlusIcon/>} />
           <Button text="Share brain" variant="secondary" startIcon={<ShareIcon/>}/>
         </div>
         <div className="flex gap-4">
