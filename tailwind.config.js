@@ -23,41 +23,65 @@ export default {
         ],
       },
       colors: {
-        // 🌿 Base
-        background: "#F2EAE0",
+        // 🌿 Base colors for a clean SaaS look
+        background: "#F8FAFC", // Slate 50
         surface: "#FFFFFF",
+        
+        // 🎨 Primary Brand Palette (Indigo)
+        primary: {
+          DEFAULT: "#4F46E5", // Indigo 600
+          hover: "#4338CA",    // Indigo 700
+          light: "#EEF2FF",    // Indigo 50
+        },
 
-        // 🎨 Your Palette
-        primary: "#9B8EC7", // main actions
-        primaryHover: "#887AC0",
+        // 🎨 Secondary Palette (Slate/Blue)
+        secondary: {
+          DEFAULT: "#64748B", // Slate 500
+          hover: "#475569",    // Slate 600
+          light: "#F1F5F9",    // Slate 100
+        },
 
-        secondary: "#B4D3D9", // sidebar / soft surfaces
-        secondaryHover: "#A0C4CB",
-
+        // 🎨 Accent colors
         accent: {
-          500: "#c7b4d5ff",
-          600: "#bda6ce",
-        }, // tags / secondary buttons
+          purple: "#8B5CF6",
+          pink: "#EC4899",
+          amber: "#F59E0B",
+        },
 
-        // 📝 Text
-        textPrimary: "#2E2E2E",
-        textSecondary: "#6B6B6B",
-        textMuted: "#9E9E9E",
+        // 📝 Text Hierarchy
+        text: {
+          primary: "#0F172A",   // Slate 900
+          secondary: "#475569", // Slate 600
+          muted: "#94A3B8",     // Slate 400
+        },
 
         // 📌 UI States
-        border: "#E0E0E0",
-        highlight: "#E6DDF5",
+        border: "#E2E8F0",      // Slate 200
+        input: "#F1F5F9",       // Slate 100
+        ring: "#CBD5E1",        // Slate 300
 
         // ⚠️ Semantic Colors
-        success: "#A8D5BA",
-        warning: "#F6C177",
-        error: "#E27D7D",
-        info: "#B4D3D9",
+        success: "#10B981",
+        warning: "#F59E0B",
+        error: "#EF4444",
+        info: "#3B82F6",
 
-        // 🌑 Optional Dark Mode (future)
-        darkBg: "#1E1E2F",
-        darkSurface: "#2A2A40",
+        // 🌑 Dark Mode (Ready for implementation)
+        dark: {
+          bg: "#0F172A",
+          surface: "#1E293B",
+          border: "#334155",
+          text: "#F8FAFC",
+        }
       },
+      boxShadow: {
+        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'premium': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+      },
+      borderRadius: {
+        'xl': '1rem',
+        '2xl': '1.5rem',
+      }
     },
   },
   plugins: [],
