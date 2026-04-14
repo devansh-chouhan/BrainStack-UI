@@ -1,10 +1,20 @@
-interface InputProps{
-    placeholder: string;
-    onChange: () => void
-} 
+import { forwardRef } from "react";
 
-export const Input = ({onChange , placeholder}:InputProps) => {
-    return <div>
-        <input placeholder={placeholder} type="text" className="px-4 py-2 border rounded" onChange={onChange}/>
-    </div>
+interface InputProps {
+    placeholder: string;
 }
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+    ({ placeholder }, ref) => {
+        return (
+            <div>
+                <input
+                    ref={ref}
+                    placeholder={placeholder}
+                    type="text"
+                    className="px-4 py-2 border rounded"
+                />
+            </div>
+        );
+    }
+);
