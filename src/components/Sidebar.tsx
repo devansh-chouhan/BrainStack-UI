@@ -1,7 +1,9 @@
 import { LayoutDashboard, MessageSquare, Play, Hash, Settings, LogOut, BrainCircuit } from "lucide-react";
 import { SidebarItem } from "./SidebarItem.tsx";
+import { useNavigate } from "react-router-dom";
 
 export const SideBar = () => {
+  const navigate = useNavigate()
   return (
     <div className="h-screen bg-white border-r border-border w-72 fixed left-0 top-0 flex flex-col z-20">
       {/* Brand Header */}
@@ -29,7 +31,12 @@ export const SideBar = () => {
       {/* Footer Items */}
       <div className="p-4 border-t border-border bg-slate-50/50">
         <SidebarItem text="Settings" icon={<Settings size={20} />} />
-        <SidebarItem text="Logout" icon={<LogOut size={20} />} />
+        <SidebarItem text="Logout" 
+        icon={<LogOut size={20} />} 
+        onClick={() => {
+          localStorage.removeItem("token")
+          navigate("/signin")
+        }}/>
       </div>
     </div>
   );
