@@ -53,7 +53,7 @@ export const Card = ({ title, link, onDelete, onShare }: CardProps) => {
           </a>
           <button 
             onClick={onDelete}
-            className="p-1.5 text-text-muted hover:text-error hover:bg-red-50 rounded-md transition-colors opacity-0 group-hover:opacity-100"
+            className="p-1.5 text-text-muted hover:text-error hover:bg-red-50 rounded-md transition-colors group-hover:opacity-100"
             title="Delete"
           >
             <Trash2 size={16} />

@@ -74,8 +74,18 @@ export const Dashboard = () => {
           <div className="max-w-7xl mx-auto">
             {contents?.length ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-                {contents.map(({ type, link, title }, index) => (
-                  <Card key={index} type={type} link={link} title={title} />
+                {contents.map(({ link, title , _id}) => (
+                  <Card key={_id} link={link} title={title} onDelete={async () => {
+                    await axios.delete(`${BACKEND_URL}/api/v1/content` , {
+                      data:{
+                        contentId:_id
+                      },
+                      headers:{
+                        "Authorization":localStorage.getItem("token"),
+                      }
+                    })
+                    refresh()
+                  }}/>
                 ))}
               </div>
             ) : (
