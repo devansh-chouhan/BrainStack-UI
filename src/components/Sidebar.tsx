@@ -1,8 +1,9 @@
 import { LayoutDashboard, MessageSquare, Play, Hash, Settings, LogOut, BrainCircuit } from "lucide-react";
 import { SidebarItem } from "./SidebarItem.tsx";
 import { useNavigate } from "react-router-dom";
+import { Tab } from "../config.tsx";
 
-export const SideBar = () => {
+export const SideBar = ({currentTab , setCurrentTab}) => {
   const navigate = useNavigate()
   return (
     <div className="h-screen bg-white border-r border-border w-72 fixed left-0 top-0 flex flex-col z-20">
@@ -21,10 +22,14 @@ export const SideBar = () => {
       {/* Navigation Items */}
       <div className="flex-1 px-4 overflow-y-auto">
         <div className="space-y-1">
-          <SidebarItem text="Dashboard" icon={<LayoutDashboard size={20} />} active />
-          <SidebarItem text="Tweets" icon={<MessageSquare size={20} />} />
-          <SidebarItem text="Videos" icon={<Play size={20} />} />
-          <SidebarItem text="Tags" icon={<Hash size={20} />} />
+          <SidebarItem text="Dashboard" icon={<LayoutDashboard size={20} />} 
+          onClick={() => setCurrentTab(Tab.Dashboard)} active={currentTab === Tab.Dashboard} />
+          <SidebarItem text="Tweets" icon={<MessageSquare size={20} />} 
+          onClick={() => setCurrentTab(Tab.Tweets)} active={currentTab === Tab.Tweets} />
+          <SidebarItem text="Videos" icon={<Play size={20} />} 
+          onClick={() => setCurrentTab(Tab.Videos)} active={currentTab === Tab.Videos} />
+          <SidebarItem text="Tags" icon={<Hash size={20} />} 
+          onClick={() => setCurrentTab(Tab.Tags)} active={currentTab === Tab.Tags} />
         </div>
       </div>
 

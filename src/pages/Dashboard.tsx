@@ -6,11 +6,27 @@ import { Plus, Share2, Search } from "lucide-react";
 import { SideBar } from "../components/Sidebar.tsx";
 import { useContent } from "../hooks/useContent.tsx";
 import axios from "axios";
-import { BACKEND_URL } from "../config.tsx";
+import { BACKEND_URL, Tab } from "../config.tsx";
 
 export const Dashboard = () => {
   const [modelOpen, setModelOpen] = useState(false);
+  const [currentTab ,setCurrentTab ] = useState(Tab.Dashboard)
   const { contents, refresh } = useContent();
+
+  const filterContents = contents?.filter((content) => {
+    if(currentTab === Tab.Dashboard){
+      return true
+    }
+    if(currentTab === Tab.Tweets){
+      return (content.link.includes("twitter.com") || content.link.includes("x.com")) 
+    }
+    if(currentTab === Tab.Videos){
+      return content.link.includes("youtube.com")
+    }
+    if(currentTab === Tab.Tags){
+      return (!content.link.includes("twitter.com") && !content.link.includes("x.com") && !content.link.includes("youtube.com"));
+    }
+  })
 
   useEffect(() => {
     refresh();
@@ -18,7 +34,7 @@ export const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background flex">
-      <SideBar />
+      <SideBar currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
       <main className="flex-1 ml-72 min-h-screen flex flex-col">
         <ContentModal open={modelOpen} onClose={() => setModelOpen(false)} />
@@ -72,9 +88,10 @@ export const Dashboard = () => {
         {/* Content Area */}
         <div className="flex-1 p-8 overflow-y-auto">
           <div className="max-w-7xl mx-auto">
-            {contents?.length ? (
+            {(
+              filterContents?.length ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-                {contents.map(({ link, title , _id}) => (
+                {filterContents.map(({ link, title , _id}) => (
                   <Card key={_id} link={link} title={title} onDelete={async () => {
                     await axios.delete(`${BACKEND_URL}/api/v1/content` , {
                       data:{
@@ -95,9 +112,10 @@ export const Dashboard = () => {
                 </div>
                 <h3 className="text-xl font-bold text-text-primary mb-2">No content yet</h3>
                 <p className="text-text-secondary max-w-sm">
-                  Click the "Add Content" button to start building your personal knowledge base.
+                  Try switching tabs or adding new content.
                 </p>
               </div>
+            )
             )}
           </div>
         </div>

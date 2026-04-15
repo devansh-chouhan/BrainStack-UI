@@ -1,4 +1,5 @@
 import { Share2, ExternalLink, Trash2, Play as Youtube, MessageSquare as Twitter, FileText } from "lucide-react";
+import { useEffect } from "react";
 
 interface CardProps {
   title: string;
@@ -16,6 +17,12 @@ const getLinkType = (link: string): "tweet" | "video" | "document" => {
 export const Card = ({ title, link, onDelete, onShare }: CardProps) => {
   const type = getLinkType(link);
   const Icon = type === "video" ? Youtube : type === "tweet" ? Twitter : FileText;
+
+  useEffect(() => {
+  if (type === "tweet" && window.twttr) {
+    window.twttr.widgets.load();
+  }
+}, [type, link]);
 
   return (
     <div className="group bg-white rounded-xl border border-border overflow-hidden flex flex-col min-h-[320px] w-full sm:max-w-[340px] shadow-sm hover:shadow-premium transition-all duration-300">
@@ -77,7 +84,7 @@ export const Card = ({ title, link, onDelete, onShare }: CardProps) => {
           )}
 
           {type === "tweet" && (
-            <div className="h-full overflow-y-auto scrollbar-hide">
+            <div className="h-full overflow-y-auto no-scrollbar">
                 <blockquote className="twitter-tweet w-full">
                     <a href={link.replace("x.com", "twitter.com")}></a>
                 </blockquote>
