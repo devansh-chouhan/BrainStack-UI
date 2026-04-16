@@ -1,3 +1,4 @@
+import { ProtectedRoute } from "./components/ProtectedRoute.tsx";
 import { Signin } from "./components/Signin.tsx";
 import { Signup } from "./components/Signup.tsx";
 import { Dashboard } from "./pages/Dashboard";
@@ -9,7 +10,10 @@ export default function App() {
       <Routes>
         <Route path="/signup" element={<Signup/>} />
         <Route path="/signin" element={<Signin/>} />
-        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/dashboard" 
+        element={<ProtectedRoute>
+          <Dashboard/>
+        </ProtectedRoute>} />
       </Routes>
   </BrowserRouter>
 }

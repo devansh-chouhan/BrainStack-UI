@@ -72,7 +72,6 @@ export const Dashboard = () => {
                       "Authorization":localStorage.getItem("token"),
                     }
                   })
-                  console.log(isSharable.data);
                   if(isSharable.data.hash){
                     alert(`Your brain is already sharable at http://localhost:5173/share/${isSharable.data.hash}`)
                     return
