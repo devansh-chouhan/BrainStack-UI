@@ -67,6 +67,17 @@ export const Dashboard = () => {
                 variant="secondary"
                 startIcon={<Share2 size={20} />}
                 onClick={async () => {
+                  const isSharable = await axios.get(`${BACKEND_URL}/api/v1/brain/is-sharable` , {
+                    headers:{
+                      "Authorization":localStorage.getItem("token"),
+                    }
+                  })
+                  console.log(isSharable.data);
+                  if(isSharable.data.hash){
+                    alert(`Your brain is already sharable at http://localhost:5173/share/${isSharable.data.hash}`)
+                    return
+                  }
+
                   const response = await axios.post(
                     `${BACKEND_URL}/api/v1/brain/share`,
                     { share: true },
