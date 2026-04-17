@@ -1,4 +1,4 @@
-export const BACKEND_URL="http://brainstack-z7ky.onrender.com";
+export const BACKEND_URL="https://brainstack-z7ky.onrender.com";
 
 export const Tab = {
   Dashboard : "Dashboard",
