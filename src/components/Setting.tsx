@@ -6,7 +6,7 @@ interface SettingProps {
 }
 
 export const Setting = ({ onClose }: SettingProps) => {
-    const { username, sharable } = useSetting();
+    const { username, sharable, toggleSharing, loading } = useSetting();
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -57,7 +57,7 @@ export const Setting = ({ onClose }: SettingProps) => {
                     <div className="space-y-4">
                         <h3 className="text-xs font-bold uppercase tracking-wider text-text-muted px-1">Privacy & Sharing</h3>
                         <div className="space-y-3">
-                            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-border group">
+                            <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-border group relative">
                                 <div className="p-2 bg-blue-50 text-blue-500 rounded-lg group-hover:bg-blue-100 transition-colors">
                                     <Share2 size={20} />
                                 </div>
@@ -72,11 +72,25 @@ export const Setting = ({ onClose }: SettingProps) => {
                                             <span className="text-[10px] font-bold text-text-muted">PRIVATE</span>
                                         )}
                                     </div>
-                                    <p className="text-xs text-text-secondary leading-normal">
+                                    <p className="text-xs text-text-secondary leading-normal pr-16">
                                         {sharable 
                                             ? "Your brain is currently public and can be viewed via your unique hash link." 
                                             : "Your brain is private. No one can see your saved content but you."}
                                     </p>
+                                    
+                                    <div className="mt-4 flex justify-end">
+                                        <button 
+                                            disabled={loading}
+                                            onClick={() => toggleSharing(!sharable)}
+                                            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all active:scale-95 ${
+                                                sharable 
+                                                ? "bg-rose-50 text-rose-600 hover:bg-rose-100" 
+                                                : "bg-primary/10 text-primary hover:bg-primary/20"
+                                            } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                                        >
+                                            {loading ? "Processing..." : sharable ? "Disable Sharing" : "Enable Sharing"}
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -102,11 +116,6 @@ export const Setting = ({ onClose }: SettingProps) => {
                         className="px-4 py-2 text-sm font-bold text-text-secondary hover:text-text-primary transition-colors"
                     >
                         Close
-                    </button>
-                    <button 
-                        className="px-4 py-2 bg-primary hover:bg-primary-hover text-white rounded-lg text-sm font-bold shadow-md transition-all active:scale-95"
-                    >
-                        Save Changes
                     </button>
                 </div>
             </div>
