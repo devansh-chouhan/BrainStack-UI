@@ -2,11 +2,15 @@ import { LayoutDashboard, MessageSquare, Play, Hash, Settings, LogOut, BrainCirc
 import { SidebarItem } from "./SidebarItem.tsx";
 import { useNavigate } from "react-router-dom";
 import { Tab } from "../config.tsx";
+import { Setting } from "./Setting.tsx";
+import { useState } from "react";
 
 export const SideBar = ({currentTab , setCurrentTab}) => {
   const navigate = useNavigate()
-  return (
+  const [settingOpen , setSettingOpen] = useState(false)
+  return <>
     <div className="h-screen bg-white border-r border-border w-72 fixed left-0 top-0 flex flex-col z-20">
+    {settingOpen && <Setting onClose={() => setSettingOpen(false)} />}
       {/* Brand Header */}
       <div className="p-6">
         <div className="flex items-center gap-3 text-primary">
@@ -35,7 +39,11 @@ export const SideBar = ({currentTab , setCurrentTab}) => {
 
       {/* Footer Items */}
       <div className="p-4 border-t border-border bg-slate-50/50">
-        <SidebarItem text="Settings" icon={<Settings size={20} />} />
+        <SidebarItem text="Settings" 
+        icon={<Settings size={20} />}
+        onClick={() => {
+          setSettingOpen(!settingOpen)
+        }} />
         <SidebarItem text="Logout" 
         icon={<LogOut size={20} />} 
         onClick={() => {
@@ -44,5 +52,5 @@ export const SideBar = ({currentTab , setCurrentTab}) => {
         }}/>
       </div>
     </div>
-  );
+    </>
 };
