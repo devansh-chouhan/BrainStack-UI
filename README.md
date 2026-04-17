@@ -64,7 +64,7 @@
    Create a `.env` file (or update `src/config.tsx`) with your backend URL:
 
    ```env
-   VITE_BACKEND_URL=your_backend_api_url
+   BACKEND_URL=your_backend_api_url
    ```
 
 4. **Start the development server**:
