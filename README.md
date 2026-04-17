@@ -1,73 +1,132 @@
-# React + TypeScript + Vite
+# 🧠 BrainStack UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
-Currently, two official plugins are available:
+**BrainStack** is your personal "Second Brain" application designed to organize digital chaos. It helps you capture, categorize, and recall everything you find interesting online—from tweets and YouTube videos to articles and personal notes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<p align="center">
+  <img src="public/image.png" alt="BrainStack Preview" width="100%" style="border-radius: 12px; border: 1px solid #e2e8f0;">
+</p>
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+- 🚀 **Instant Capture**: Save tweets, videos, and articles in a single click with content-aware cards.
+- 📂 **Smart Categorization**: Organizes your content into intuitive categories like Videos, Tweets, and Documents.
+- 🔗 **Quick Sharing**: Generate unique, shareable links to your curated "Stacks" to collaborate or showcase your knowledge.
+- 🔍 **Lightning Search**: Find exactly what you're looking for with a fast, real-time search interface.
+- 🛡️ **Secure & Private**: Built with modern security practices to keep your digital library safe.
+- 🎨 **Premium UI/UX**: A clean, modern interface featuring glassmorphism, smooth transitions, and a responsive layout.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Frontend Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite 8](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Navigation**: [React Router 7](https://reactrouter.com/)
+- **API Client**: [Axios](https://axios-http.com/)
+- **Deployment**: Optimized for [Vercel](https://vercel.com/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (Latest LTS)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/devansh-chouhan/BrainStack-UI.git
+   cd BrainStack-UI
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up Environment Variables**:
+   Create a `.env` file (or update `src/config.tsx`) with your backend URL:
+
+   ```env
+   VITE_BACKEND_URL=your_backend_api_url
+   ```
+
+4. **Start the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📂 Project Structure
+
+```text
+brainstack-ui/
+├── public/           # Static assets
+├── src/
+│   ├── components/    # Reusable UI components (Button, Card, Sidebar, etc.)
+│   ├── hooks/         # Custom React hooks (useContent, etc.)
+│   ├── pages/         # Page components (Home, Dashboard, SharedBrain)
+│   ├── icons/         # Custom SVG/Lucide icon wrappers
+│   ├── App.tsx        # Main application routing
+│   ├── main.tsx       # Entry point
+│   └── index.css      # Tailwind & Global styles
+├── tailwind.config.js # Tailwind configuration
+├── vite.config.ts    # Vite configuration
+└── vercel.json       # Vercel deployment configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🎨 Design System
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+BrainStack uses a custom design system built on top of Tailwind CSS, featuring:
+
+- **HSL-based Color Palettes**: Consistent branding with `primary`, `secondary`, and `accent` colors.
+- **Premium Shadows**: Multi-layered shadows for depth.
+- **Smooth Animations**: Tailored CSS transitions for modals and hover states.
+- **Responsive Layouts**: Fully optimized for Desktop, Tablet, and Mobile.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git checkout origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<p align="center">Built with ❤️ by Devansh Chouhan</p>
