@@ -4,6 +4,7 @@ import { Signin } from "./components/Signin.tsx";
 import { Signup } from "./components/Signup.tsx";
 import { Dashboard } from "./pages/Dashboard";
 import { Home } from "./pages/Home.tsx";
+import { SharedBrain } from "./pages/SharedBrain.tsx";
 
 export default function App() {
   return <BrowserRouter>
@@ -11,6 +12,7 @@ export default function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/signin" element={<Signin/>} />
+        <Route path="/share/:shareLink" element={<SharedBrain />} />
         <Route path="/dashboard" 
         element={<ProtectedRoute>
           <Dashboard/>

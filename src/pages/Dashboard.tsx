@@ -7,8 +7,10 @@ import { SideBar } from "../components/Sidebar.tsx";
 import { useContent } from "../hooks/useContent.tsx";
 import axios from "axios";
 import { BACKEND_URL, Tab } from "../config.tsx";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   const [modelOpen, setModelOpen] = useState(false);
   const [currentTab ,setCurrentTab ] = useState(Tab.Dashboard)
   const { contents, refresh } = useContent();
@@ -73,7 +75,7 @@ export const Dashboard = () => {
                     }
                   })
                   if(isSharable.data.hash){
-                    alert(`Your brain is already sharable at http://localhost:5173/share/${isSharable.data.hash}`)
+                    navigate(`/share/${isSharable.data.hash}`)
                     return
                   }
 
@@ -86,9 +88,10 @@ export const Dashboard = () => {
                       },
                     }
                   );
-                  const shareUrl = `http://localhost:5173/share/${response.data.hash}`;
-                  // In a real app, use a toast instead of alert
-                  alert(`Share link created: ${shareUrl}`);
+                  
+                  if (response.data.hash) {
+                    navigate(`/share/${response.data.hash}`)
+                  }
                 }}
               />
             </div>

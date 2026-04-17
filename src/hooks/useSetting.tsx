@@ -17,7 +17,7 @@ export const useSetting = () => {
             setUsername(res.data.username)
             setSharable(res.data.sharable)
         })
-    } , []);
+    } , [sharable]);
 
     return {username , sharable}
 }

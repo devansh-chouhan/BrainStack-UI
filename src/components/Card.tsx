@@ -58,13 +58,15 @@ export const Card = ({ title, link, onDelete, onShare }: CardProps) => {
           >
             <ExternalLink size={16} />
           </a>
-          <button 
-            onClick={onDelete}
-            className="p-1.5 text-text-muted hover:text-error hover:bg-red-50 rounded-md transition-colors group-hover:opacity-100"
-            title="Delete"
-          >
-            <Trash2 size={16} />
-          </button>
+          {onDelete && (
+            <button 
+              onClick={onDelete}
+              className="p-1.5 text-text-muted hover:text-error hover:bg-red-50 rounded-md transition-colors group-hover:opacity-100"
+              title="Delete"
+            >
+              <Trash2 size={16} />
+            </button>
+          )}
         </div>
       </div>
 
