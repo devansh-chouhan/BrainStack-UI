@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 import { Card } from "../components/Card";
-import { Brain } from "lucide-react";
+import { LoadingPage } from "../components/LoadingPage";
+import { BrainCircuit } from "lucide-react";
 
 export const SharedBrain = () => {
   const { shareLink } = useParams();
@@ -35,11 +36,7 @@ export const SharedBrain = () => {
   }, [shareLink]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-      </div>
-    );
+    return <LoadingPage />;
   }
 
   if (error) {
@@ -60,7 +57,7 @@ export const SharedBrain = () => {
       <header className="bg-white border-b border-slate-200 py-6 px-8 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto flex items-center gap-4">
           <div className="bg-primary/10 p-2 rounded-xl">
-             <Brain className="text-primary" size={32} />
+             <BrainCircuit className="text-primary" size={32} />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-slate-900">{username}'s Brain</h1>
